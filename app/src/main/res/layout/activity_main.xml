@@ -82,7 +82,7 @@
         android:text="@string/hide_list" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/mainToastButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

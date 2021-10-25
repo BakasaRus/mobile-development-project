@@ -4,9 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +23,11 @@ class MainActivity : AppCompatActivity() {
 //            val intent = Intent(this, BookDetailActivity::class.java)
             val intent = Intent(this, DetailsActivity::class.java)
             startActivity(intent)
+        }
+
+        val toastButton = findViewById<Button>(R.id.mainToastButton)
+        toastButton.setOnClickListener {
+            Toast.makeText(applicationContext, "Hello!", Toast.LENGTH_SHORT).show()
         }
     }
 }
