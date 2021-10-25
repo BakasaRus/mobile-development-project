@@ -22,8 +22,6 @@ class MainActivity : AppCompatActivity() {
         listView.adapter = adapter
 
         listView.setOnItemClickListener { parent, view, position, id ->
-//            val element = adapter.getItemAtPosition(position) // The item that was clicked
-//            val intent = Intent(this, BookDetailActivity::class.java)
             val intent = Intent(this, DetailsActivity::class.java)
             startActivity(intent)
         }
@@ -36,11 +34,12 @@ class MainActivity : AppCompatActivity() {
         val colorSwitch = findViewById<SwitchMaterial>(R.id.colorSwitch)
         colorSwitch.setOnCheckedChangeListener { button, isChecked ->
             val bar = supportActionBar
-            if (isChecked) {
-                bar?.setBackgroundDrawable(ColorDrawable(Color.CYAN))
+            val color = if (isChecked) {
+                resources.getColor(R.color.teal_700)
             } else {
-                bar?.setBackgroundDrawable(ColorDrawable(Color.RED))
+                resources.getColor(R.color.purple_500)
             }
+            bar?.setBackgroundDrawable(ColorDrawable(color))
         }
     }
 }
