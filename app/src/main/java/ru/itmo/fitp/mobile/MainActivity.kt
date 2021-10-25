@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import com.google.android.material.switchmaterial.SwitchMaterial
 
@@ -29,6 +30,12 @@ class MainActivity : AppCompatActivity() {
         val toastButton = findViewById<Button>(R.id.mainToastButton)
         toastButton.setOnClickListener {
             Toast.makeText(applicationContext, "Hello!", Toast.LENGTH_SHORT).show()
+        }
+
+        val hideButton = findViewById<Button>(R.id.hideListButton)
+        hideButton.setOnClickListener {
+            Log.d("ITMO", "List is hidden now")
+            listView.visibility = View.INVISIBLE
         }
 
         val colorSwitch = findViewById<SwitchMaterial>(R.id.colorSwitch)
