@@ -67,26 +67,12 @@
         android:minHeight="48dp"
         android:text="@string/new_label_text" />
 
-    <LinearLayout
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         android:layout_marginBottom="20dp"
-        android:orientation="horizontal">
-
-        <Switch
-            android:id="@+id/switch3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/change_label_color" />
-    </LinearLayout>
+        android:text="@string/change_label_color" />
 
     <Button
         android:id="@+id/button"
