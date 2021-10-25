@@ -1,10 +1,13 @@
 package ru.itmo.fitp.mobile
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +31,16 @@ class MainActivity : AppCompatActivity() {
         val toastButton = findViewById<Button>(R.id.mainToastButton)
         toastButton.setOnClickListener {
             Toast.makeText(applicationContext, "Hello!", Toast.LENGTH_SHORT).show()
+        }
+
+        val colorSwitch = findViewById<SwitchMaterial>(R.id.colorSwitch)
+        colorSwitch.setOnCheckedChangeListener { button, isChecked ->
+            val bar = supportActionBar
+            if (isChecked) {
+                bar?.setBackgroundDrawable(ColorDrawable(Color.CYAN))
+            } else {
+                bar?.setBackgroundDrawable(ColorDrawable(Color.RED))
+            }
         }
     }
 }
