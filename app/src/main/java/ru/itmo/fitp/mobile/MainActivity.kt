@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 class MainActivity : AppCompatActivity() {
@@ -47,6 +48,12 @@ class MainActivity : AppCompatActivity() {
                 resources.getColor(R.color.purple_500)
             }
             bar?.setBackgroundDrawable(ColorDrawable(color))
+        }
+
+        val changeTextFab = findViewById<FloatingActionButton>(R.id.changeTextFab)
+        val newLabelTextView = findViewById<EditText>(R.id.newLabelText)
+        changeTextFab.setOnClickListener {
+            label.text = newLabelTextView.text
         }
     }
 }
