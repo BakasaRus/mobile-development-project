@@ -5,6 +5,12 @@
     <string name="change_label_color">Change label color</string>
     <string name="new_label_text">New label text…</string>
     <string name="my_label">My Label!</string>
+    <string name="main_layout">Main layout</string>
+    <string name="show_toast">Show toast</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="minus_point">-1</string>
+    <string name="plus_point">+1</string>
+    <string name="ellipsis">…</string>
     <string-array name="names">
         <item>Hello</item>
         <item>World</item>
