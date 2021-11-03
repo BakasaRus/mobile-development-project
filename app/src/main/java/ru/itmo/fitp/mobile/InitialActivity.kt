@@ -13,31 +13,30 @@ import android.widget.Toast
 import androidx.core.view.forEach
 
 class InitialActivity : AppCompatActivity() {
+    private lateinit var plusButton: Button
+    private lateinit var minusButton: Button
+    private lateinit var pointsField: TextView
+    private lateinit var pointsKey: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_initial)
 
-        val sharedPreferences = getPreferences(Context.MODE_PRIVATE)
-        var points = sharedPreferences.getInt("points", 0)
-        val pointsField = findViewById<TextView>(R.id.pointsField)
-        pointsField.text = points.toString()
+        pointsField = findViewById(R.id.pointsField)
+        plusButton = findViewById(R.id.plusButton)
+        minusButton = findViewById(R.id.minusButton)
+        pointsKey = getString(R.string.pointsPrefKey)
 
-        val plusButton = findViewById<Button>(R.id.plusButton)
-        val minusButton = findViewById<Button>(R.id.minusButton)
+        var points = getPreferences(Context.MODE_PRIVATE).getInt(pointsKey, 0)
+        applyPointsChange(points)
 
         plusButton.setOnClickListener {
             points++
-            pointsField.text = points.toString()
-            sharedPreferences.edit().putInt("points", points).apply()
-            plusButton.isEnabled = points < 100
-            minusButton.isEnabled = points > 0
+            applyPointsChange(points)
         }
         minusButton.setOnClickListener {
             points--
-            pointsField.text = points.toString()
-            sharedPreferences.edit().putInt("points", points).apply()
-            plusButton.isEnabled = points < 100
-            minusButton.isEnabled = points > 0
+            applyPointsChange(points)
         }
 
         val button = findViewById<Button>(R.id.toast_button)
@@ -52,5 +51,12 @@ class InitialActivity : AppCompatActivity() {
             intent.putExtra("label", "Hello from InitialActivity")
             startActivity(intent)
         }
+    }
+
+    private fun applyPointsChange(points: Int) {
+        pointsField.text = points.toString()
+        getPreferences(Context.MODE_PRIVATE).edit().putInt(pointsKey, points).apply()
+        plusButton.isEnabled = points < 100
+        minusButton.isEnabled = points > 0
     }
 }

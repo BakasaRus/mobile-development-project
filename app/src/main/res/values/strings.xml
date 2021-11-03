@@ -11,6 +11,7 @@
     <string name="minus_point">-1</string>
     <string name="plus_point">+1</string>
     <string name="ellipsis">…</string>
+    <string name="pointsPrefKey">points</string>
     <string-array name="names">
         <item>Hello</item>
         <item>World</item>
