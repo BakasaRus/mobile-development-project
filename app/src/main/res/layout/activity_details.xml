@@ -7,17 +7,19 @@
     tools:context=".DetailsActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/detailsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Image title"
+        android:text="@string/placeholder"
+        android:textSize="16sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/imageView8"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/detailsIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -27,16 +29,16 @@
         app:srcCompat="?android:attr/fingerprintAuthDrawable" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/detailsDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet commodo justo, ac consectetur nunc. Vestibulum eu magna sollicitudin, interdum lacus ut, tincidunt nulla. Praesent tristique nibh vitae lectus mollis, non hendrerit mi ullamcorper. Cras rhoncus ante ac neque hendrerit fermentum. Donec consequat condimentum molestie. Fusce commodo eros eget ligula rhoncus commodo. Aenean sit amet dapibus justo."
+        android:text="@string/placeholder_long"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/detailsIcon" />
 
     <ImageView
         android:id="@+id/imageView8"

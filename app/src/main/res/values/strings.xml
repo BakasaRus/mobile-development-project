@@ -12,6 +12,8 @@
     <string name="plus_point">+1</string>
     <string name="ellipsis">…</string>
     <string name="pointsPrefKey">points</string>
+    <string name="placeholder">Placeholder Text</string>
+    <string name="placeholder_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet commodo justo, ac consectetur nunc. Vestibulum eu magna sollicitudin, interdum lacus ut, tincidunt nulla. Praesent tristique nibh vitae lectus mollis, non hendrerit mi ullamcorper. Cras rhoncus ante ac neque hendrerit fermentum. Donec consequat condimentum molestie. Fusce commodo eros eget ligula rhoncus commodo. Aenean sit amet dapibus justo.</string>
     <string-array name="names">
         <item>Hello</item>
         <item>World</item>

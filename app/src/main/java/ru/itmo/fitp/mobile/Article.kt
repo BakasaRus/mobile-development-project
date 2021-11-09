@@ -1,6 +1,10 @@
 package ru.itmo.fitp.mobile
 
-data class Article(val title: String, val description: String, val type: Category) {
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Article(val title: String, val description: String, val type: Category): Parcelable {
     companion object {
         fun dummyArticles(): ArrayList<Article> {
             val result = ArrayList<Article>()
