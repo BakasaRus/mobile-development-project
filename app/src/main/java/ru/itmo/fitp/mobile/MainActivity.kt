@@ -18,8 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         val label = findViewById<TextView>(R.id.label)
         label.text = intent.getStringExtra("label")
-
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resources.getStringArray(R.array.names))
+        val adapter = ArticlesAdapter(this, Article.dummyArticles())
         val listView = findViewById<ListView>(R.id.names_list)
         listView.adapter = adapter
 
