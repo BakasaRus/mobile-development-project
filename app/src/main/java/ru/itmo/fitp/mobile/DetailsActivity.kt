@@ -5,77 +5,78 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import kotlin.random.Random
-import kotlin.random.nextUInt
+import ru.itmo.fitp.mobile.iterators.CollatzIterator
+import ru.itmo.fitp.mobile.iterators.FibonacciIterator
+import ru.itmo.fitp.mobile.iterators.NaturalIterator
 
 class DetailsActivity : AppCompatActivity() {
+    private var natural = NaturalIterator()
+    private var fibonacci = FibonacciIterator()
+    private var collatz = CollatzIterator()
+
+    private lateinit var iconView: ImageView
+    private lateinit var titleView: TextView
+    private lateinit var descriptionView: TextView
+
+    private lateinit var naturalButton: Button
+    private lateinit var naturalText: TextView
+    private lateinit var fibonacciButton: Button
+    private lateinit var fibonacciText: TextView
+    private lateinit var collatzButton: Button
+    private lateinit var collatzText: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
 
         val article = intent.getParcelableExtra<Article>("article")
 
-        val iconView = findViewById<ImageView>(R.id.detailsIcon)
+        iconView = findViewById(R.id.detailsIcon)
         iconView.setImageResource(article!!.type.getIcon())
 
-        val titleView = findViewById<TextView>(R.id.detailsTitle)
+        titleView = findViewById(R.id.detailsTitle)
         titleView.text = article.title
 
-        val descriptionView = findViewById<TextView>(R.id.detailsDescription)
+        descriptionView = findViewById(R.id.detailsDescription)
         descriptionView.text = article.description
 
-        val naturalButton = findViewById<Button>(R.id.naturalButton)
-        val naturalText = findViewById<TextView>(R.id.naturalText)
+        naturalButton = findViewById(R.id.naturalButton)
+        naturalText = findViewById(R.id.naturalText)
         naturalText.text = natural.next().toString()
         naturalButton.setOnClickListener {
             naturalText.text = natural.next().toString()
         }
 
-        val fibonacciButton = findViewById<Button>(R.id.fibonacciButton)
-        val fibonacciText = findViewById<TextView>(R.id.fibonacciText)
+        fibonacciButton = findViewById(R.id.fibonacciButton)
+        fibonacciText = findViewById(R.id.fibonacciText)
         fibonacciText.text = fibonacci.next().toString()
         fibonacciButton.setOnClickListener {
             fibonacciText.text = fibonacci.next().toString()
         }
 
-        val collatzButton = findViewById<Button>(R.id.collatzButton)
-        val collatzText = findViewById<TextView>(R.id.collatzText)
+        collatzButton = findViewById(R.id.collatzButton)
+        collatzText = findViewById(R.id.collatzText)
         collatzText.text = collatz.next().toString()
         collatzButton.setOnClickListener {
             collatzText.text = collatz.next().toString()
         }
     }
 
-    private val natural = iterator {
-        var term = 0
-        while (true) {
-            yield(term)
-            term++
-            if (term < 0)
-                term = 0
-        }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSerializable("natural", natural)
+        outState.putSerializable("fibonacci", fibonacci)
+        outState.putSerializable("collatz", collatz)
     }
 
-    private val fibonacci = iterator {
-        var terms = Pair(0, 1)
-        while (true) {
-            yield(terms.first)
-            terms = Pair(terms.second, terms.first + terms.second)
-            if (terms.second < 0) {
-                terms = Pair(0, 1)
-            }
-        }
-    }
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        natural = savedInstanceState.getSerializable("natural") as NaturalIterator
+        fibonacci = savedInstanceState.getSerializable("fibonacci") as FibonacciIterator
+        collatz = savedInstanceState.getSerializable("collatz") as CollatzIterator
 
-    private val collatz = iterator {
-        var term = Random(System.currentTimeMillis()).nextUInt() % 1000U
-        while (true) {
-            yield(term)
-            term = if (term % 2U == 0U) {
-                term / 2U
-            } else {
-                term * 3U + 1U
-            }
-        }
+        naturalText.text = natural.current().toString()
+        fibonacciText.text = fibonacci.current().toString()
+        collatzText.text = collatz.current().toString()
     }
 }
