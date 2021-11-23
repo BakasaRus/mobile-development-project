@@ -17,6 +17,8 @@
     <string name="naturalButtonText" translatable="false">Nat</string>
     <string name="fibonacciButtonText" translatable="false">Fib</string>
     <string name="collatzButtonText" translatable="false">Col</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
     <string-array name="names">
         <item>Hello</item>
         <item>World</item>

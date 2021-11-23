@@ -10,17 +10,32 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.forEach
+import androidx.drawerlayout.widget.DrawerLayout
+import android.view.MenuItem
+
+import androidx.annotation.NonNull
 
 class InitialActivity : AppCompatActivity() {
     private lateinit var plusButton: Button
     private lateinit var minusButton: Button
     private lateinit var pointsField: TextView
     private lateinit var pointsKey: String
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var drawerToggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_initial)
+
+        drawerLayout = findViewById(R.id.my_drawer_layout)
+        drawerToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close)
+
+        drawerLayout.addDrawerListener(drawerToggle)
+        drawerToggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         pointsField = findViewById(R.id.pointsField)
         plusButton = findViewById(R.id.plusButton)
@@ -51,6 +66,12 @@ class InitialActivity : AppCompatActivity() {
             intent.putExtra("label", "Hello from InitialActivity")
             startActivity(intent)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (drawerToggle.onOptionsItemSelected(item)) {
+            true
+        } else super.onOptionsItemSelected(item)
     }
 
     private fun applyPointsChange(points: Int) {

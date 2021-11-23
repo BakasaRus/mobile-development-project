@@ -10,4 +10,6 @@
     <string name="placeholder">Замещающий текст</string>
     <string name="my_label">Мой текст</string>
     <string name="toast">Тост</string>
+    <string name="nav_open">Открыть</string>
+    <string name="nav_close">Закрыть</string>
 </resources>
