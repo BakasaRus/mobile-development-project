@@ -16,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import android.view.MenuItem
 
 import androidx.annotation.NonNull
+import com.google.android.material.navigation.NavigationView
 
 class InitialActivity : AppCompatActivity() {
     private lateinit var plusButton: Button
@@ -23,6 +24,7 @@ class InitialActivity : AppCompatActivity() {
     private lateinit var pointsField: TextView
     private lateinit var pointsKey: String
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView: NavigationView
     private lateinit var drawerToggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,17 +56,22 @@ class InitialActivity : AppCompatActivity() {
             applyPointsChange(points)
         }
 
-        val button = findViewById<Button>(R.id.toast_button)
-        button.setOnClickListener {
-            Toast.makeText(applicationContext, "Test", Toast.LENGTH_SHORT).show()
-            Log.d("ITMO", "Test")
-        }
-
-        val next = findViewById<Button>(R.id.next_activity_button)
-        next.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("label", "Hello from InitialActivity")
-            startActivity(intent)
+        navigationView = findViewById(R.id.navigation)
+        navigationView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.next_activity_button -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("label", "Hello from InitialActivity")
+                    startActivity(intent)
+                    true
+                }
+                R.id.toast_button -> {
+                    Toast.makeText(applicationContext, "Test", Toast.LENGTH_SHORT).show()
+                    Log.d("ITMO", "Test")
+                    true
+                }
+                else -> { false }
+            }
         }
     }
 

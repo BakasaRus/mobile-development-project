@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:title="@string/main_layout" />
-    <item android:title="@string/show_toast" />
-    <item android:title="@string/dummy_button" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/next_activity_button"
+        android:title="@string/main_layout" />
+    <item
+        android:id="@+id/toast_button"
+        android:title="@string/show_toast" />
+    <item
+        android:id="@+id/dummy_button"
+        android:title="@string/dummy_button" />
 </menu>

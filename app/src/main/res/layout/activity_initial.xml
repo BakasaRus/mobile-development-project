@@ -9,61 +9,37 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="20dp">
 
         <Button
-            android:id="@+id/next_activity_button"
-            android:layout_width="match_parent"
+            android:id="@+id/minusButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_layout" />
+            android:layout_weight="0"
+            android:text="@string/minus_point" />
+
+        <TextView
+            android:id="@+id/pointsField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/ellipsis"
+            android:textAlignment="center" />
 
         <Button
-            android:id="@+id/toast_button"
-            android:layout_width="match_parent"
+            android:id="@+id/plusButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/show_toast" />
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/dummy_button" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/minusButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="@string/minus_point" />
-
-            <TextView
-                android:id="@+id/pointsField"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/ellipsis"
-                android:textAlignment="center" />
-
-            <Button
-                android:id="@+id/plusButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="@string/plus_point" />
-
-        </LinearLayout>
+            android:layout_weight="0"
+            android:text="@string/plus_point" />
 
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
