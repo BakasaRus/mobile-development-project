@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailsActivity">
+
+    <TextView
+        android:id="@+id/detailsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/placeholder"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView8"
+        app:layout_constraintStart_toStartOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+    <ImageView
+        android:id="@+id/detailsIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_round_developer_mode_24" />
+
+    <TextView
+        android:id="@+id/detailsDescription"
+        android:layout_width="328dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/placeholder_long"
+        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/detailsIcon" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/wallpaper" />
+
+    <Button
+        android:id="@+id/naturalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="-48dp"
+        android:text="@string/naturalButtonText"
+        app:layout_constraintBottom_toTopOf="@+id/fibonacciButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/detailsDescription"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/fibonacciButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fibonacciButtonText"
+        app:layout_constraintBottom_toTopOf="@+id/collatzButton"
+        app:layout_constraintEnd_toEndOf="@+id/naturalButton"
+        app:layout_constraintStart_toStartOf="@+id/naturalButton"
+        app:layout_constraintTop_toBottomOf="@+id/naturalButton" />
+
+    <Button
+        android:id="@+id/collatzButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/collatzButtonText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/fibonacciButton"
+        app:layout_constraintStart_toStartOf="@+id/fibonacciButton"
+        app:layout_constraintTop_toBottomOf="@+id/fibonacciButton" />
+
+    <TextView
+        android:id="@+id/naturalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/naturalButton"
+        app:layout_constraintEnd_toStartOf="@+id/naturalButton"
+        app:layout_constraintStart_toEndOf="@+id/detailsDescription"
+        app:layout_constraintTop_toTopOf="@+id/naturalButton" />
+
+    <TextView
+        android:id="@+id/fibonacciText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fibonacciButton"
+        app:layout_constraintEnd_toEndOf="@+id/naturalText"
+        app:layout_constraintStart_toStartOf="@+id/naturalText"
+        app:layout_constraintTop_toTopOf="@+id/fibonacciButton" />
+
+    <TextView
+        android:id="@+id/collatzText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/collatzButton"
+        app:layout_constraintEnd_toEndOf="@+id/fibonacciText"
+        app:layout_constraintStart_toStartOf="@+id/fibonacciText"
+        app:layout_constraintTop_toTopOf="@+id/collatzButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
