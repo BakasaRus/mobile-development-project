@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Моё приложение</string>
+    <string name="hide_list">Спрятать список</string>
+    <string name="change_label_color">Изменить цвет</string>
+    <string name="new_label_text">Новый текст…</string>
+    <string name="main_layout">Основной экран</string>
+    <string name="show_toast">Показать тост</string>
+    <string name="dummy_button">Кнопка</string>
+    <string name="placeholder">Замещающий текст</string>
+    <string name="my_label">Мой текст</string>
+    <string name="toast">Тост</string>
+</resources>

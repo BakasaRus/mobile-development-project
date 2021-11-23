@@ -8,15 +8,15 @@
     <string name="main_layout">Main layout</string>
     <string name="show_toast">Show toast</string>
     <string name="dummy_button">Dummy Button</string>
-    <string name="minus_point">-1</string>
-    <string name="plus_point">+1</string>
-    <string name="ellipsis">…</string>
-    <string name="pointsPrefKey">points</string>
+    <string name="minus_point" translatable="false">-1</string>
+    <string name="plus_point" translatable="false">+1</string>
+    <string name="ellipsis" translatable="false">…</string>
+    <string name="pointsPrefKey" translatable="false">points</string>
     <string name="placeholder">Placeholder Text</string>
-    <string name="placeholder_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet commodo justo, ac consectetur nunc. Vestibulum eu magna sollicitudin, interdum lacus ut, tincidunt nulla. Praesent tristique nibh vitae lectus mollis, non hendrerit mi ullamcorper. Cras rhoncus ante ac neque hendrerit fermentum. Donec consequat condimentum molestie. Fusce commodo eros eget ligula rhoncus commodo. Aenean sit amet dapibus justo.</string>
-    <string name="naturalButtonText">Nat</string>
-    <string name="fibonacciButtonText">Fib</string>
-    <string name="collatzButtonText">Col</string>
+    <string name="placeholder_long" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet commodo justo, ac consectetur nunc. Vestibulum eu magna sollicitudin, interdum lacus ut, tincidunt nulla. Praesent tristique nibh vitae lectus mollis, non hendrerit mi ullamcorper. Cras rhoncus ante ac neque hendrerit fermentum. Donec consequat condimentum molestie. Fusce commodo eros eget ligula rhoncus commodo. Aenean sit amet dapibus justo.</string>
+    <string name="naturalButtonText" translatable="false">Nat</string>
+    <string name="fibonacciButtonText" translatable="false">Fib</string>
+    <string name="collatzButtonText" translatable="false">Col</string>
     <string-array name="names">
         <item>Hello</item>
         <item>World</item>
