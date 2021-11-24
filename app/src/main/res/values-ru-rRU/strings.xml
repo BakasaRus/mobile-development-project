@@ -12,4 +12,5 @@
     <string name="toast">Тост</string>
     <string name="nav_open">Открыть</string>
     <string name="nav_close">Закрыть</string>
+    <string name="hello_snackbar">Ура, нотификашка!</string>
 </resources>

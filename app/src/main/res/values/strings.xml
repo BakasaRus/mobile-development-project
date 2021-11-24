@@ -19,6 +19,7 @@
     <string name="collatzButtonText" translatable="false">Col</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+    <string name="hello_snackbar">Hello Snackbar</string>
     <string-array name="names">
         <item>Hello</item>
         <item>World</item>

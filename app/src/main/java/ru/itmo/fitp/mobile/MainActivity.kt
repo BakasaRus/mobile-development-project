@@ -8,7 +8,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 class MainActivity : AppCompatActivity() {
@@ -51,10 +53,12 @@ class MainActivity : AppCompatActivity() {
             bar?.setBackgroundDrawable(ColorDrawable(color))
         }
 
+        val coordinatorLayout = findViewById<CoordinatorLayout>(R.id.coordinator)
         val changeTextFab = findViewById<FloatingActionButton>(R.id.changeTextFab)
         val newLabelTextView = findViewById<EditText>(R.id.newLabelText)
         changeTextFab.setOnClickListener {
             label.text = newLabelTextView.text
+            Snackbar.make(coordinatorLayout, getString(R.string.hello_snackbar), Snackbar.LENGTH_LONG).show()
         }
     }
 }
