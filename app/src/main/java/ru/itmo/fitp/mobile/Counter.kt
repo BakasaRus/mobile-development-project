@@ -1,17 +1,15 @@
 package ru.itmo.fitp.mobile
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.function.Consumer
 import kotlin.concurrent.thread
 
 class Counter(delay: Long, isRunning: AtomicBoolean, callback: Consumer<Int>, name: String? = null) {
     private var counter = 0
+    private var shouldRun = true
 
-    @RequiresApi(Build.VERSION_CODES.N)
     private val thread = thread(name = name) {
-        while (true) {
+        while (shouldRun) {
             if (!isRunning.get()) {
                 continue
             }
@@ -23,5 +21,10 @@ class Counter(delay: Long, isRunning: AtomicBoolean, callback: Consumer<Int>, na
 
     fun reset() {
         counter = 0
+    }
+
+    fun destroy() {
+        shouldRun = false
+        thread.join()
     }
 }

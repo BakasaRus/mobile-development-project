@@ -2,6 +2,7 @@ package ru.itmo.fitp.mobile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import java.util.concurrent.atomic.AtomicBoolean
@@ -29,10 +30,12 @@ class ThreadActivity : AppCompatActivity() {
 
         slowCounter = Counter(600, isRunning, {
             renderCounter(it, slowCounterLabel)
+            Log.d("ITMO", "Slow Counter ${Thread.currentThread().id}")
         })
 
         fastCounter = Counter(400, isRunning, {
             renderCounter(it, fastCounterLabel)
+            Log.d("ITMO", "Fast Counter ${Thread.currentThread().id}")
         })
 
         runButton = findViewById(R.id.runCounterButton)
@@ -53,6 +56,12 @@ class ThreadActivity : AppCompatActivity() {
             renderCounter(0, fastCounterLabel)
             renderCounter(0, slowCounterLabel)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        fastCounter.destroy()
+        slowCounter.destroy()
     }
 
     private fun renderCounter(value: Int, view: TextView) = runOnUiThread {
