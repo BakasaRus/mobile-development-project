@@ -13,4 +13,8 @@
     <string name="nav_open">Открыть</string>
     <string name="nav_close">Закрыть</string>
     <string name="hello_snackbar">Ура, нотификашка!</string>
+    <string name="thread_layout">Экран с потоками</string>
+    <string name="run_threads">Старт</string>
+    <string name="stop_threads">Стоп</string>
+    <string name="reset_threads">Сброс</string>
 </resources>

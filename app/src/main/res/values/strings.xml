@@ -6,6 +6,7 @@
     <string name="new_label_text">New label text…</string>
     <string name="my_label">My Label!</string>
     <string name="main_layout">Main layout</string>
+    <string name="thread_layout">Thread layout</string>
     <string name="show_toast">Show toast</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="minus_point" translatable="false">-1</string>
@@ -20,6 +21,9 @@
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
     <string name="hello_snackbar">Hello Snackbar</string>
+    <string name="run_threads">Run</string>
+    <string name="stop_threads">Stop</string>
+    <string name="reset_threads">Reset</string>
     <string-array name="names">
         <item>Hello</item>
         <item>World</item>

@@ -4,6 +4,9 @@
         android:id="@+id/next_activity_button"
         android:title="@string/main_layout" />
     <item
+        android:id="@+id/thread_activity_button"
+        android:title="@string/thread_layout" />
+    <item
         android:id="@+id/toast_button"
         android:title="@string/show_toast" />
     <item
