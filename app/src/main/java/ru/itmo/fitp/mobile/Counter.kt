@@ -1,26 +1,30 @@
 package ru.itmo.fitp.mobile
 
 import java.util.concurrent.atomic.AtomicBoolean
-import java.util.function.Consumer
 import kotlin.concurrent.thread
 
-class Counter(delay: Long, isRunning: AtomicBoolean, callback: Consumer<Int>, name: String? = null) {
+class Counter(delay: Long, isRunning: AtomicBoolean, renderMethod: (Int) -> Unit) {
     private var counter = 0
     private var shouldRun = true
+    private var shouldReset = false
 
-    private val thread = thread(name = name) {
+    private val thread = thread {
         while (shouldRun) {
+            if (shouldReset) {
+                counter = 0
+                shouldReset = false
+            }
             if (!isRunning.get()) {
                 continue
             }
             counter++
-            callback.accept(counter)
+            renderMethod(counter)
             Thread.sleep(delay)
         }
     }
 
     fun reset() {
-        counter = 0
+        shouldReset = true
     }
 
     fun destroy() {

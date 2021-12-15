@@ -28,15 +28,15 @@ class ThreadActivity : AppCompatActivity() {
         renderCounter(0, fastCounterLabel)
         renderCounter(0, slowCounterLabel)
 
-        slowCounter = Counter(600, isRunning, {
+        slowCounter = Counter(slowDelay, isRunning) {
             renderCounter(it, slowCounterLabel)
             Log.d("ITMO", "Slow Counter ${Thread.currentThread().id}")
-        })
+        }
 
-        fastCounter = Counter(400, isRunning, {
+        fastCounter = Counter(fastDelay, isRunning) {
             renderCounter(it, fastCounterLabel)
             Log.d("ITMO", "Fast Counter ${Thread.currentThread().id}")
-        })
+        }
 
         runButton = findViewById(R.id.runCounterButton)
         runButton.setOnClickListener {
