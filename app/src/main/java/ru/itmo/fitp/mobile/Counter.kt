@@ -3,7 +3,7 @@ package ru.itmo.fitp.mobile
 import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.concurrent.thread
 
-class Counter(delay: Long, isRunning: AtomicBoolean, renderMethod: (Int) -> Unit) {
+class Counter(@Volatile private var delay: Long, isRunning: AtomicBoolean, renderMethod: (Int) -> Unit) {
     private var counter = 0
     private var shouldRun = true
     private var shouldReset = false
@@ -25,6 +25,10 @@ class Counter(delay: Long, isRunning: AtomicBoolean, renderMethod: (Int) -> Unit
 
     fun reset() {
         shouldReset = true
+    }
+
+    fun changeDelay(newDelay: Long) {
+        this.delay = newDelay
     }
 
     fun destroy() {

@@ -16,6 +16,7 @@ class ThreadActivity : AppCompatActivity() {
     private lateinit var stopButton: Button
     private lateinit var resetButton: Button
 
+    @Volatile
     private var slowDelay = 600L
     private lateinit var slowCounter: Counter
     private lateinit var slowCounterLabel: TextView
@@ -23,6 +24,7 @@ class ThreadActivity : AppCompatActivity() {
     private lateinit var slowDelayDecButton: Button
     private lateinit var slowDelayIncButton: Button
 
+    @Volatile
     private var fastDelay = 400L
     private lateinit var fastCounter: Counter
     private lateinit var fastCounterLabel: TextView
@@ -47,10 +49,12 @@ class ThreadActivity : AppCompatActivity() {
         slowDelayIncButton = findViewById(R.id.slowDelayIncButton)
         slowDelayDecButton.setOnClickListener {
             slowDelay = max(slowDelay - 50, 50)
+            slowCounter.changeDelay(slowDelay)
             slowDelayLabel.text = resources.getString(R.string.some_ms, slowDelay)
         }
         slowDelayIncButton.setOnClickListener {
             slowDelay = min(slowDelay + 50, 2000)
+            slowCounter.changeDelay(slowDelay)
             slowDelayLabel.text = resources.getString(R.string.some_ms, slowDelay)
         }
 
@@ -67,10 +71,12 @@ class ThreadActivity : AppCompatActivity() {
         fastDelayIncButton = findViewById(R.id.fastDelayIncButton)
         fastDelayDecButton.setOnClickListener {
             fastDelay = max(fastDelay - 50, 50)
+            fastCounter.changeDelay(fastDelay)
             fastDelayLabel.text = resources.getString(R.string.some_ms, fastDelay)
         }
         fastDelayIncButton.setOnClickListener {
             fastDelay = min(fastDelay + 50, 2000)
+            fastCounter.changeDelay(fastDelay)
             fastDelayLabel.text = resources.getString(R.string.some_ms, fastDelay)
         }
 
