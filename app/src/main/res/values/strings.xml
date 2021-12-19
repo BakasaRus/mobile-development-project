@@ -24,6 +24,8 @@
     <string name="run_threads">Run</string>
     <string name="stop_threads">Stop</string>
     <string name="reset_threads">Reset</string>
+    <string name="minus50" translatable="false">-50</string>
+    <string name="plus50" translatable="false">+50</string>
     <string-array name="names">
         <item>Hello</item>
         <item>World</item>

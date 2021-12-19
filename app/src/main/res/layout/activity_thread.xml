@@ -7,7 +7,7 @@
     tools:context=".ThreadActivity">
 
     <TextView
-        android:id="@+id/slowIncLabel"
+        android:id="@+id/slowCounterLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin"
@@ -18,26 +18,26 @@
         tools:text="0" />
 
     <TextView
-        android:id="@+id/fastIncLabel"
+        android:id="@+id/fastCounterLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slowIncLabel"
+        app:layout_constraintTop_toBottomOf="@+id/slowDelayDecButton"
         tools:text="0" />
 
     <Button
         android:id="@+id/runCounterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginTop="@dimen/double_margin"
         android:text="@string/run_threads"
         app:layout_constraintEnd_toStartOf="@+id/stopCounterButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fastIncLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/fastDelayDecButton" />
 
     <Button
         android:id="@+id/stopCounterButton"
@@ -58,5 +58,65 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/stopCounterButton"
         app:layout_constraintTop_toTopOf="@+id/stopCounterButton" />
+
+    <TextView
+        android:id="@+id/slowDelayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        tools:text="600 ms"
+        app:layout_constraintEnd_toStartOf="@+id/slowDelayIncButton"
+        app:layout_constraintStart_toEndOf="@+id/slowDelayDecButton"
+        app:layout_constraintTop_toBottomOf="@+id/slowCounterLabel" />
+
+    <Button
+        android:id="@+id/slowDelayDecButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:text="@string/minus50"
+        app:layout_constraintBottom_toBottomOf="@+id/slowDelayLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/slowDelayLabel" />
+
+    <Button
+        android:id="@+id/slowDelayIncButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:text="@string/plus50"
+        app:layout_constraintBottom_toBottomOf="@+id/slowDelayLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/slowDelayLabel" />
+
+    <Button
+        android:id="@+id/fastDelayDecButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:text="@string/minus50"
+        app:layout_constraintBottom_toBottomOf="@+id/fastDelayLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fastDelayLabel" />
+
+    <TextView
+        android:id="@+id/fastDelayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintEnd_toStartOf="@+id/fastDelayIncButton"
+        app:layout_constraintStart_toEndOf="@+id/fastDelayDecButton"
+        app:layout_constraintTop_toBottomOf="@+id/fastCounterLabel"
+        tools:text="400 ms" />
+
+    <Button
+        android:id="@+id/fastDelayIncButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:text="@string/plus50"
+        app:layout_constraintBottom_toBottomOf="@+id/fastDelayLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fastDelayLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
