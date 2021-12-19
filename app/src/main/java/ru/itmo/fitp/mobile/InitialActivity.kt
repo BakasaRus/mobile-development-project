@@ -70,6 +70,11 @@ class InitialActivity : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
+                R.id.request_activity_button -> {
+                    val intent = Intent(this, RequestActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
                 R.id.toast_button -> {
                     Toast.makeText(applicationContext, "Test", Toast.LENGTH_SHORT).show()
                     Log.d("ITMO", "Test")

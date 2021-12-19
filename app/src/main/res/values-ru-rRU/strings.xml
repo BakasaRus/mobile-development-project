@@ -18,4 +18,5 @@
     <string name="stop_threads">Стоп</string>
     <string name="reset_threads">Сброс</string>
     <string name="some_ms">%1$d мс</string>
+    <string name="request_layout">Экран с запросом</string>
 </resources>
