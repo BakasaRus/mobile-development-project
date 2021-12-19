@@ -42,16 +42,16 @@ class ThreadActivity : AppCompatActivity() {
         }
 
         slowDelayLabel = findViewById(R.id.slowDelayLabel)
-        slowDelayLabel.text = "${slowDelay} ms"
+        slowDelayLabel.text = resources.getString(R.string.some_ms, slowDelay)
         slowDelayDecButton = findViewById(R.id.slowDelayDecButton)
         slowDelayIncButton = findViewById(R.id.slowDelayIncButton)
         slowDelayDecButton.setOnClickListener {
             slowDelay = max(slowDelay - 50, 50)
-            slowDelayLabel.text = "${slowDelay} ms"
+            slowDelayLabel.text = resources.getString(R.string.some_ms, slowDelay)
         }
         slowDelayIncButton.setOnClickListener {
             slowDelay = min(slowDelay + 50, 2000)
-            slowDelayLabel.text = "${slowDelay} ms"
+            slowDelayLabel.text = resources.getString(R.string.some_ms, slowDelay)
         }
 
         fastCounterLabel = findViewById(R.id.fastCounterLabel)
@@ -62,16 +62,16 @@ class ThreadActivity : AppCompatActivity() {
         }
 
         fastDelayLabel = findViewById(R.id.fastDelayLabel)
-        fastDelayLabel.text = "${fastDelay} ms"
+        fastDelayLabel.text = resources.getString(R.string.some_ms, fastDelay)
         fastDelayDecButton = findViewById(R.id.fastDelayDecButton)
         fastDelayIncButton = findViewById(R.id.fastDelayIncButton)
         fastDelayDecButton.setOnClickListener {
             fastDelay = max(fastDelay - 50, 50)
-            fastDelayLabel.text = "${fastDelay} ms"
+            fastDelayLabel.text = resources.getString(R.string.some_ms, fastDelay)
         }
         fastDelayIncButton.setOnClickListener {
             fastDelay = min(fastDelay + 50, 2000)
-            fastDelayLabel.text = "${fastDelay} ms"
+            fastDelayLabel.text = resources.getString(R.string.some_ms, fastDelay)
         }
 
         runButton = findViewById(R.id.runCounterButton)
