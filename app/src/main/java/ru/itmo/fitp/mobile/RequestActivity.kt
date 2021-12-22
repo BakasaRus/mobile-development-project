@@ -8,11 +8,15 @@ import android.widget.TextView
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
+import android.net.Uri
+
+import android.content.Intent
 
 class RequestActivity : AppCompatActivity() {
     private lateinit var titleLabel: TextView
     private lateinit var descriptionLabel: TextView
     private lateinit var getAnotherGameButton: Button
+    private lateinit var openGameButton: Button
 
     private val client = OkHttpClient()
     private val gson = Gson()
@@ -24,6 +28,7 @@ class RequestActivity : AppCompatActivity() {
         titleLabel = findViewById(R.id.titleLabel)
         descriptionLabel = findViewById(R.id.descriptionLabel)
         getAnotherGameButton = findViewById(R.id.getGameButton)
+        openGameButton = findViewById(R.id.openGameButton)
 
         getRandomGame()
 
@@ -51,6 +56,10 @@ class RequestActivity : AppCompatActivity() {
                     runOnUiThread {
                         titleLabel.text = game.title
                         descriptionLabel.text = game.description
+                        openGameButton.setOnClickListener {
+                            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://nintendo.ru${game.url}"))
+                            startActivity(browserIntent)
+                        }
                     }
                 }
             }
