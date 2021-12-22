@@ -5,98 +5,79 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import ru.itmo.fitp.mobile.databinding.ActivityThreadBinding
 import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.math.min
 import kotlin.math.max
 
 class ThreadActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityThreadBinding
     private var isRunning = AtomicBoolean(false)
-
-    private lateinit var runButton: Button
-    private lateinit var stopButton: Button
-    private lateinit var resetButton: Button
 
     @Volatile
     private var slowDelay = 600L
     private lateinit var slowCounter: Counter
-    private lateinit var slowCounterLabel: TextView
-    private lateinit var slowDelayLabel: TextView
-    private lateinit var slowDelayDecButton: Button
-    private lateinit var slowDelayIncButton: Button
 
     @Volatile
     private var fastDelay = 400L
     private lateinit var fastCounter: Counter
-    private lateinit var fastCounterLabel: TextView
-    private lateinit var fastDelayLabel: TextView
-    private lateinit var fastDelayDecButton: Button
-    private lateinit var fastDelayIncButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_thread)
+        binding = ActivityThreadBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        slowCounterLabel = findViewById(R.id.slowCounterLabel)
-        renderCounter(0, slowCounterLabel)
+        renderCounter(0, binding.slowCounterLabel)
         slowCounter = Counter(slowDelay, isRunning) {
-            renderCounter(it, slowCounterLabel)
+            renderCounter(it, binding.slowCounterLabel)
             Log.d("ITMO", "Slow Counter ${Thread.currentThread().id}")
         }
 
-        slowDelayLabel = findViewById(R.id.slowDelayLabel)
-        slowDelayLabel.text = resources.getString(R.string.some_ms, slowDelay)
-        slowDelayDecButton = findViewById(R.id.slowDelayDecButton)
-        slowDelayIncButton = findViewById(R.id.slowDelayIncButton)
-        slowDelayDecButton.setOnClickListener {
+        binding.slowDelayLabel.text = resources.getString(R.string.some_ms, slowDelay)
+        binding.slowDelayDecButton.setOnClickListener {
             slowDelay = max(slowDelay - 50, 50)
             slowCounter.changeDelay(slowDelay)
-            slowDelayLabel.text = resources.getString(R.string.some_ms, slowDelay)
+            binding.slowDelayLabel.text = resources.getString(R.string.some_ms, slowDelay)
         }
-        slowDelayIncButton.setOnClickListener {
+        binding.slowDelayIncButton.setOnClickListener {
             slowDelay = min(slowDelay + 50, 2000)
             slowCounter.changeDelay(slowDelay)
-            slowDelayLabel.text = resources.getString(R.string.some_ms, slowDelay)
+            binding.slowDelayLabel.text = resources.getString(R.string.some_ms, slowDelay)
         }
 
-        fastCounterLabel = findViewById(R.id.fastCounterLabel)
-        renderCounter(0, fastCounterLabel)
+        renderCounter(0, binding.fastCounterLabel)
         fastCounter = Counter(fastDelay, isRunning) {
-            renderCounter(it, fastCounterLabel)
+            renderCounter(it, binding.fastCounterLabel)
             Log.d("ITMO", "Fast Counter ${Thread.currentThread().id}")
         }
 
-        fastDelayLabel = findViewById(R.id.fastDelayLabel)
-        fastDelayLabel.text = resources.getString(R.string.some_ms, fastDelay)
-        fastDelayDecButton = findViewById(R.id.fastDelayDecButton)
-        fastDelayIncButton = findViewById(R.id.fastDelayIncButton)
-        fastDelayDecButton.setOnClickListener {
+        binding.fastDelayLabel.text = resources.getString(R.string.some_ms, fastDelay)
+        binding.fastDelayDecButton.setOnClickListener {
             fastDelay = max(fastDelay - 50, 50)
             fastCounter.changeDelay(fastDelay)
-            fastDelayLabel.text = resources.getString(R.string.some_ms, fastDelay)
+            binding.fastDelayLabel.text = resources.getString(R.string.some_ms, fastDelay)
         }
-        fastDelayIncButton.setOnClickListener {
+        binding.fastDelayIncButton.setOnClickListener {
             fastDelay = min(fastDelay + 50, 2000)
             fastCounter.changeDelay(fastDelay)
-            fastDelayLabel.text = resources.getString(R.string.some_ms, fastDelay)
+            binding.fastDelayLabel.text = resources.getString(R.string.some_ms, fastDelay)
         }
 
-        runButton = findViewById(R.id.runCounterButton)
-        runButton.setOnClickListener {
+        binding.runCounterButton.setOnClickListener {
             isRunning.set(true)
         }
 
-        stopButton = findViewById(R.id.stopCounterButton)
-        stopButton.setOnClickListener {
+        binding.stopCounterButton.setOnClickListener {
             isRunning.set(false)
         }
 
-        resetButton = findViewById(R.id.resetCounterButton)
-        resetButton.setOnClickListener {
+        binding.resetCounterButton.setOnClickListener {
             isRunning.set(false)
             fastCounter.reset()
-            renderCounter(0, fastCounterLabel)
+            renderCounter(0, binding.fastCounterLabel)
             slowCounter.reset()
-            renderCounter(0, slowCounterLabel)
+            renderCounter(0, binding.slowCounterLabel)
         }
     }
 
