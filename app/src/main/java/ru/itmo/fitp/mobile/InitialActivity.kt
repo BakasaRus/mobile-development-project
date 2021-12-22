@@ -17,47 +17,42 @@ import android.view.MenuItem
 
 import androidx.annotation.NonNull
 import com.google.android.material.navigation.NavigationView
+import ru.itmo.fitp.mobile.databinding.ActivityInitialBinding
+import ru.itmo.fitp.mobile.databinding.ActivityRequestBinding
 
 class InitialActivity : AppCompatActivity() {
-    private lateinit var plusButton: Button
-    private lateinit var minusButton: Button
-    private lateinit var pointsField: TextView
+    private lateinit var binding: ActivityInitialBinding
     private lateinit var pointsKey: String
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var navigationView: NavigationView
     private lateinit var drawerToggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_initial)
+        binding = ActivityInitialBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        drawerLayout = findViewById(R.id.my_drawer_layout)
-        drawerToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close)
+        drawerToggle = ActionBarDrawerToggle(this, binding.myDrawerLayout, R.string.nav_open, R.string.nav_close)
 
-        drawerLayout.addDrawerListener(drawerToggle)
+        binding.myDrawerLayout.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        pointsField = findViewById(R.id.pointsField)
-        plusButton = findViewById(R.id.plusButton)
-        minusButton = findViewById(R.id.minusButton)
         pointsKey = getString(R.string.pointsPrefKey)
 
         var points = getPreferences(Context.MODE_PRIVATE).getInt(pointsKey, 0)
         applyPointsChange(points)
 
-        plusButton.setOnClickListener {
+        binding.plusButton.setOnClickListener {
             points++
             applyPointsChange(points)
         }
-        minusButton.setOnClickListener {
+        binding.minusButton.setOnClickListener {
             points--
             applyPointsChange(points)
         }
 
-        navigationView = findViewById(R.id.navigation)
-        navigationView.setNavigationItemSelectedListener {
+        binding.navigation.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.next_activity_button -> {
                     val intent = Intent(this, MainActivity::class.java)
@@ -92,9 +87,9 @@ class InitialActivity : AppCompatActivity() {
     }
 
     private fun applyPointsChange(points: Int) {
-        pointsField.text = points.toString()
+        binding.pointsField.text = points.toString()
         getPreferences(Context.MODE_PRIVATE).edit().putInt(pointsKey, points).apply()
-        plusButton.isEnabled = points < 100
-        minusButton.isEnabled = points > 0
+        binding.plusButton.isEnabled = points < 100
+        binding.minusButton.isEnabled = points > 0
     }
 }
