@@ -17,6 +17,9 @@ import com.squareup.picasso.Picasso
 class RequestActivity : AppCompatActivity() {
     private lateinit var titleLabel: TextView
     private lateinit var descriptionLabel: TextView
+    private lateinit var releaseDateLabel: TextView
+    private lateinit var publisherLabel: TextView
+    private lateinit var priceLabel: TextView
     private lateinit var getAnotherGameButton: Button
     private lateinit var openGameButton: Button
     private lateinit var gameImage: ImageView
@@ -30,6 +33,9 @@ class RequestActivity : AppCompatActivity() {
 
         titleLabel = findViewById(R.id.titleLabel)
         descriptionLabel = findViewById(R.id.descriptionLabel)
+        releaseDateLabel = findViewById(R.id.releaseDateLabel)
+        publisherLabel = findViewById(R.id.publisherLabel)
+        priceLabel = findViewById(R.id.priceLabel)
         getAnotherGameButton = findViewById(R.id.getGameButton)
         openGameButton = findViewById(R.id.openGameButton)
         gameImage = findViewById(R.id.gameImage)
@@ -61,6 +67,9 @@ class RequestActivity : AppCompatActivity() {
                         Picasso.get().load(game.image).into(gameImage)
                         titleLabel.text = game.title
                         descriptionLabel.text = game.description
+                        releaseDateLabel.text = resources.getString(R.string.release_date, game.prettyDateReleased)
+                        publisherLabel.text = resources.getString(R.string.publisher, game.publisher)
+                        priceLabel.text = resources.getString(R.string.price, game.price)
                         openGameButton.setOnClickListener {
                             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://nintendo.ru${game.url}"))
                             startActivity(browserIntent)

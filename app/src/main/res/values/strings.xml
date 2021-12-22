@@ -30,6 +30,9 @@
     <string name="some_ms">%1$d ms</string>
     <string name="open_in_eshop">Open in eShop</string>
     <string name="get_another_game">Get another game</string>
+    <string name="release_date">Release date: %1$s</string>
+    <string name="publisher">Publisher: %1$s</string>
+    <string name="price">Price: %1$d RUB</string>
     <string-array name="names">
         <item>Hello</item>
         <item>World</item>
