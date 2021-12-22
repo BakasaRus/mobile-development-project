@@ -12,38 +12,39 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.switchmaterial.SwitchMaterial
+import ru.itmo.fitp.mobile.databinding.ActivityInitialBinding
+import ru.itmo.fitp.mobile.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        val label = findViewById<TextView>(R.id.label)
-        label.text = intent.getStringExtra("label")
+        binding.label.text = intent.getStringExtra("label")
         val adapter = ArticlesAdapter(this, Article.dummyArticles())
-        val listView = findViewById<ListView>(R.id.names_list)
-        listView.adapter = adapter
+        binding.namesList.adapter = adapter
 
-        listView.setOnItemClickListener { parent, view, position, id ->
+        binding.namesList.setOnItemClickListener { parent, view, position, id ->
             val article = adapter.getItem(position)
             val intent = Intent(this, DetailsActivity::class.java)
             intent.putExtra("article", article)
             startActivity(intent)
         }
 
-        val toastButton = findViewById<Button>(R.id.mainToastButton)
-        toastButton.setOnClickListener {
+        binding.mainToastButton.setOnClickListener {
             Toast.makeText(applicationContext, "Hello!", Toast.LENGTH_SHORT).show()
         }
 
-        val hideButton = findViewById<Button>(R.id.hideListButton)
-        hideButton.setOnClickListener {
+        binding.hideListButton.setOnClickListener {
             Log.d("ITMO", "List is hidden now")
-            listView.visibility = View.INVISIBLE
+            binding.namesList.visibility = View.INVISIBLE
         }
 
-        val colorSwitch = findViewById<SwitchMaterial>(R.id.colorSwitch)
-        colorSwitch.setOnCheckedChangeListener { button, isChecked ->
+        binding.colorSwitch.setOnCheckedChangeListener { button, isChecked ->
             val bar = supportActionBar
             val color = if (isChecked) {
                 resources.getColor(R.color.teal_700)
@@ -53,12 +54,9 @@ class MainActivity : AppCompatActivity() {
             bar?.setBackgroundDrawable(ColorDrawable(color))
         }
 
-        val coordinatorLayout = findViewById<CoordinatorLayout>(R.id.coordinator)
-        val changeTextFab = findViewById<FloatingActionButton>(R.id.changeTextFab)
-        val newLabelTextView = findViewById<EditText>(R.id.newLabelText)
-        changeTextFab.setOnClickListener {
-            label.text = newLabelTextView.text
-            Snackbar.make(coordinatorLayout, getString(R.string.hello_snackbar), Snackbar.LENGTH_LONG).show()
+        binding.changeTextFab.setOnClickListener {
+            binding.label.text = binding.newLabelText.text
+            Snackbar.make(binding.coordinator, getString(R.string.hello_snackbar), Snackbar.LENGTH_LONG).show()
         }
     }
 }
