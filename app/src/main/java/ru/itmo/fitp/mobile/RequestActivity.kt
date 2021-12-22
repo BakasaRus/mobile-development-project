@@ -11,12 +11,15 @@ import java.io.IOException
 import android.net.Uri
 
 import android.content.Intent
+import android.widget.ImageView
+import com.squareup.picasso.Picasso
 
 class RequestActivity : AppCompatActivity() {
     private lateinit var titleLabel: TextView
     private lateinit var descriptionLabel: TextView
     private lateinit var getAnotherGameButton: Button
     private lateinit var openGameButton: Button
+    private lateinit var gameImage: ImageView
 
     private val client = OkHttpClient()
     private val gson = Gson()
@@ -29,6 +32,7 @@ class RequestActivity : AppCompatActivity() {
         descriptionLabel = findViewById(R.id.descriptionLabel)
         getAnotherGameButton = findViewById(R.id.getGameButton)
         openGameButton = findViewById(R.id.openGameButton)
+        gameImage = findViewById(R.id.gameImage)
 
         getRandomGame()
 
@@ -54,6 +58,7 @@ class RequestActivity : AppCompatActivity() {
                     val game = gson.fromJson( response.body!!.string(), Game::class.java)
                     Log.d("ITMO", game.id)
                     runOnUiThread {
+                        Picasso.get().load(game.image).into(gameImage)
                         titleLabel.text = game.title
                         descriptionLabel.text = game.description
                         openGameButton.setOnClickListener {
