@@ -13,36 +13,23 @@ import android.net.Uri
 import android.content.Intent
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
+import ru.itmo.fitp.mobile.databinding.ActivityRequestBinding
 
 class RequestActivity : AppCompatActivity() {
-    private lateinit var titleLabel: TextView
-    private lateinit var descriptionLabel: TextView
-    private lateinit var releaseDateLabel: TextView
-    private lateinit var publisherLabel: TextView
-    private lateinit var priceLabel: TextView
-    private lateinit var getAnotherGameButton: Button
-    private lateinit var openGameButton: Button
-    private lateinit var gameImage: ImageView
+    private lateinit var binding: ActivityRequestBinding
 
     private val client = OkHttpClient()
     private val gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_request)
-
-        titleLabel = findViewById(R.id.titleLabel)
-        descriptionLabel = findViewById(R.id.descriptionLabel)
-        releaseDateLabel = findViewById(R.id.releaseDateLabel)
-        publisherLabel = findViewById(R.id.publisherLabel)
-        priceLabel = findViewById(R.id.priceLabel)
-        getAnotherGameButton = findViewById(R.id.getGameButton)
-        openGameButton = findViewById(R.id.openGameButton)
-        gameImage = findViewById(R.id.gameImage)
+        binding = ActivityRequestBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         getRandomGame()
 
-        getAnotherGameButton.setOnClickListener { getRandomGame() }
+        binding.getGameButton.setOnClickListener { getRandomGame() }
     }
 
     private fun getRandomGame() {
@@ -64,13 +51,13 @@ class RequestActivity : AppCompatActivity() {
                     val game = gson.fromJson( response.body!!.string(), Game::class.java)
                     Log.d("ITMO", game.id)
                     runOnUiThread {
-                        Picasso.get().load(game.image).into(gameImage)
-                        titleLabel.text = game.title
-                        descriptionLabel.text = game.description
-                        releaseDateLabel.text = resources.getString(R.string.release_date, game.prettyDateReleased)
-                        publisherLabel.text = resources.getString(R.string.publisher, game.publisher)
-                        priceLabel.text = resources.getString(R.string.price, game.price)
-                        openGameButton.setOnClickListener {
+                        Picasso.get().load(game.image).into(binding.gameImage)
+                        binding.titleLabel.text = game.title
+                        binding.descriptionLabel.text = game.description
+                        binding.releaseDateLabel.text = resources.getString(R.string.release_date, game.prettyDateReleased)
+                        binding.publisherLabel.text = resources.getString(R.string.publisher, game.publisher)
+                        binding.priceLabel.text = resources.getString(R.string.price, game.price)
+                        binding.openGameButton.setOnClickListener {
                             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://nintendo.ru${game.url}"))
                             startActivity(browserIntent)
                         }
