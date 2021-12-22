@@ -3,15 +3,24 @@ package ru.itmo.fitp.mobile
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
+import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
 
 class RequestActivity : AppCompatActivity() {
+    private lateinit var titleLabel: TextView
+    private lateinit var descriptionLabel: TextView
+
+    private val client = OkHttpClient()
+    private val gson = Gson()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request)
 
-        val client = OkHttpClient()
+        titleLabel = findViewById(R.id.titleLabel)
+        descriptionLabel = findViewById(R.id.descriptionLabel)
 
         val request = Request.Builder()
             .url("http://192.168.0.108:3000/games/random")
@@ -28,11 +37,12 @@ class RequestActivity : AppCompatActivity() {
                         throw IOException("Unexpected code $response")
                     }
 
-                    for ((name, value) in response.headers) {
-                        Log.d("ITMO", "$name: $value")
+                    val game = gson.fromJson( response.body!!.string(), Game::class.java)
+                    Log.d("ITMO", game.id)
+                    runOnUiThread {
+                        titleLabel.text = game.title
+                        descriptionLabel.text = game.description
                     }
-
-                    Log.d("ITMO", response.body!!.string())
                 }
             }
         })
