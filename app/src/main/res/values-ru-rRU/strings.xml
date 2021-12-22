@@ -19,4 +19,6 @@
     <string name="reset_threads">Сброс</string>
     <string name="some_ms">%1$d мс</string>
     <string name="request_layout">Экран с запросом</string>
+    <string name="open_in_eshop">Открыть в eShop</string>
+    <string name="get_another_game">Посмотреть другую игру</string>
 </resources>

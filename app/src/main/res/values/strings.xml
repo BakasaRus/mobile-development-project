@@ -28,6 +28,8 @@
     <string name="minus50" translatable="false">-50</string>
     <string name="plus50" translatable="false">+50</string>
     <string name="some_ms">%1$d ms</string>
+    <string name="open_in_eshop">Open in eShop</string>
+    <string name="get_another_game">Get another game</string>
     <string-array name="names">
         <item>Hello</item>
         <item>World</item>
