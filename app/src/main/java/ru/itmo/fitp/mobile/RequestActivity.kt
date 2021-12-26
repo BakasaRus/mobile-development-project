@@ -58,7 +58,7 @@ class RequestActivity : AppCompatActivity() {
                         binding.publisherLabel.text = resources.getString(R.string.publisher, game.publisher)
                         binding.priceLabel.text = resources.getString(R.string.price, game.price)
                         binding.openGameButton.setOnClickListener {
-                            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://nintendo.ru${game.url}"))
+                            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://nintendo.ru${game.url}"))
                             startActivity(browserIntent)
                         }
                     }
