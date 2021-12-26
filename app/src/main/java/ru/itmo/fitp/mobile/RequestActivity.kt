@@ -13,12 +13,14 @@ import android.net.Uri
 import android.content.Intent
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
+import okhttp3.logging.HttpLoggingInterceptor
 import ru.itmo.fitp.mobile.databinding.ActivityRequestBinding
 
 class RequestActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRequestBinding
 
-    private val client = OkHttpClient()
+    private lateinit var client: OkHttpClient
+    private lateinit var logging: HttpLoggingInterceptor
     private val gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +29,11 @@ class RequestActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        getRandomGame()
+        logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
+        client = OkHttpClient.Builder().addInterceptor(logging).build()
 
+        getRandomGame()
         binding.getGameButton.setOnClickListener { getRandomGame() }
     }
 
