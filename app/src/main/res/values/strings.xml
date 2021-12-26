@@ -33,6 +33,8 @@
     <string name="release_date">Release date: %1$s</string>
     <string name="publisher">Publisher: %1$s</string>
     <string name="price">Price: %1$d RUB</string>
+    <string name="no_internet_connection">Failed</string>
+    <string name="no_connection_to_server">Something went wrong</string>
     <string-array name="names">
         <item>Hello</item>
         <item>World</item>

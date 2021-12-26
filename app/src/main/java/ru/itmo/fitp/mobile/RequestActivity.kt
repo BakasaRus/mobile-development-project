@@ -12,6 +12,7 @@ import android.net.Uri
 
 import android.content.Intent
 import android.widget.ImageView
+import android.widget.Toast
 import com.squareup.picasso.Picasso
 import okhttp3.logging.HttpLoggingInterceptor
 import ru.itmo.fitp.mobile.databinding.ActivityRequestBinding
@@ -44,13 +45,18 @@ class RequestActivity : AppCompatActivity() {
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                e.printStackTrace()
+                runOnUiThread {
+                    Toast.makeText(applicationContext, getString(R.string.no_internet_connection), Toast.LENGTH_LONG).show()
+                }
             }
 
             override fun onResponse(call: Call, response: Response) {
                 response.use {
                     if (!response.isSuccessful) {
-                        throw IOException("Unexpected code $response")
+                        runOnUiThread {
+                            Toast.makeText(applicationContext, getString(R.string.no_connection_to_server), Toast.LENGTH_LONG).show()
+                        }
+                        return
                     }
 
                     val game = gson.fromJson( response.body!!.string(), Game::class.java)
